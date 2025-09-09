@@ -12,6 +12,9 @@ const Navigation = () => {
           <Link href="/experiments">Experiments</Link>
         </li>
         <li>
+          <Link href="/threejs-journey">ThreeJS Journey</Link>
+        </li>
+        <li>
           <Link href="/contact">Contact</Link>
         </li>
       </ul>

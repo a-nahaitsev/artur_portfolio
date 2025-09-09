@@ -1,10 +1,9 @@
-import { type Metadata } from "next";
-import { notFound } from "next/navigation";
-import { asImageSrc } from "@prismicio/client";
-import { SliceZone } from "@prismicio/react";
-
 import { createClient } from "@/prismicio";
 import { components } from "@/slices";
+import { asImageSrc } from "@prismicio/client";
+import { SliceZone } from "@prismicio/react";
+import { type Metadata } from "next";
+import { notFound } from "next/navigation";
 
 const Home = async () => {
   const client = createClient();

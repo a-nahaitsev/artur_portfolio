@@ -1,7 +1,6 @@
-import { NextApiRequest, NextApiResponse } from "next";
-import { setPreviewData, redirectToPreviewURL } from "@prismicio/next/pages";
-
 import { createClient } from "../../prismicio";
+import { setPreviewData, redirectToPreviewURL } from "@prismicio/next/pages";
+import { NextApiRequest, NextApiResponse } from "next";
 
 export default async function handler(
   req: NextApiRequest,

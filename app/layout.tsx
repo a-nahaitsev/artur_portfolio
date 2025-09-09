@@ -1,9 +1,9 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import { ThemeProvider } from "next-themes";
 import "./globals.css";
 import Navigation from "@/components/Navigation/Navigation";
 import ThemeSwitcher from "@/components/ThemeSwitcher/ThemeSwitcher";
+import type { Metadata } from "next";
+import { ThemeProvider } from "next-themes";
+import { Geist, Geist_Mono } from "next/font/google";
 
 // const geistSans = Geist({
 //   variable: "--font-geist-sans",
@@ -27,9 +27,9 @@ const RootLayout = ({
 }>) => {
   return (
     <html suppressHydrationWarning lang="en">
-      <body className="">
+      <body>
         <ThemeProvider>
-          <div className="flex flex-wrap items-center justify-between">
+          <div className="flex flex-wrap items-center relative justify-between z-10">
             <Navigation />
             <ThemeSwitcher />
           </div>

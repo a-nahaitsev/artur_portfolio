@@ -1,40 +1,40 @@
 [
-	{
-		"__TYPE__": "SharedSliceContent",
-		"variation": "default",
-		"primary": {
-			"description": {
-				"__TYPE__": "StructuredTextContent",
-				"value": [
-					{
-						"type": "paragraph",
-						"content": {
-							"text": "Veniam veniam proident pariatur aliqua non consectetur nisi. Id eu esse id non Lorem. Aute reprehenderit in ipsum exercitation incididunt."
-						}
-					}
-				]
-			},
-			"title": {
-				"__TYPE__": "StructuredTextContent",
-				"value": [
-					{
-						"type": "heading1",
-						"content": {
-							"text": "Atmosphere"
-						}
-					}
-				]
-			},
-			"button": {
-				"__TYPE__": "LinkContent",
-				"key": "b57e4168-58ff-4dfc-89b0-e4c401ba81d4",
-				"value": {
-					"__TYPE__": "ExternalLink",
-					"url": "http://twitter.com",
-					"text": "married"
-				}
-			}
-		},
-		"items": []
-	}
+  {
+    "__TYPE__": "SharedSliceContent",
+    "variation": "default",
+    "primary": {
+      "description": {
+        "__TYPE__": "StructuredTextContent",
+        "value": [
+          {
+            "type": "paragraph",
+            "content": {
+              "text": "Veniam veniam proident pariatur aliqua non consectetur nisi. Id eu esse id non Lorem. Aute reprehenderit in ipsum exercitation incididunt."
+            }
+          }
+        ]
+      },
+      "title": {
+        "__TYPE__": "StructuredTextContent",
+        "value": [
+          {
+            "type": "heading1",
+            "content": {
+              "text": "Atmosphere"
+            }
+          }
+        ]
+      },
+      "button": {
+        "__TYPE__": "LinkContent",
+        "key": "b57e4168-58ff-4dfc-89b0-e4c401ba81d4",
+        "value": {
+          "__TYPE__": "ExternalLink",
+          "url": "http://twitter.com",
+          "text": "married"
+        }
+      }
+    },
+    "items": []
+  }
 ]

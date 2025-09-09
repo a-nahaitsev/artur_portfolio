@@ -1,7 +1,7 @@
-import { FC } from "react";
 import { Content } from "@prismicio/client";
-import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import { PrismicNextLink } from "@prismicio/next";
+import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
+import { FC } from "react";
 
 export type HeroProps = SliceComponentProps<Content.HeroSlice>;
 
