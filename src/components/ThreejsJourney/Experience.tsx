@@ -6,6 +6,7 @@ import CustomEnvironment from "./CustomEnvironment";
 import CustomObject from "./CustomObject";
 import CustomPivotControls from "./CustomPivotControls";
 import CustomSky from "./CustomSky";
+import CustomText3D from "./CustomText3D";
 import FloatText from "./FloatText";
 import Fox from "./Fox";
 import { Hamburger } from "./Hamburger";
@@ -65,10 +66,10 @@ const Experience = () => {
 
       <OrbitControls makeDefault />
       {/* comment to use Environment map*/}
-      <Lights
+      {/* <Lights
         directionalLightRef={directionalLightRef}
         sunPosition={sunPosition}
-      />
+      /> */}
       {/* <CustomSky setSunPosition={setSunPosition} /> */}
 
       {/* <Stage
@@ -89,16 +90,17 @@ const Experience = () => {
       {/* </CustomPivotControls> */}
       {/* </group> */}
       {/* </Stage> */}
-      <Suspense
+      {/* <Suspense
         fallback={<ModelPlaceholder position-y={1.5} scale={[2, 3, 2]} />}
-      >
-        {/* <Model /> */}
-        <Hamburger scale={0.35} />
-      </Suspense>
-      <Fox />
-      <Plane />
+      > */}
+      {/* <Model /> */}
+      {/* <Hamburger scale={0.35} /> */}
+      {/* </Suspense> */}
+      {/* <Fox /> */}
+      {/* <Plane /> */}
       {/* <FloatText /> */}
       {/* <CustomObject /> */}
+      <CustomText3D />
     </>
   );
 };
