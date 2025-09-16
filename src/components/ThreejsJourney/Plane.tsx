@@ -3,7 +3,7 @@ import React from "react";
 const Plane = () => {
   return (
     <mesh
-      // receiveShadow // comment it using AccumulativeShadows
+      receiveShadow // comment it using AccumulativeShadows
       position-y={0}
       rotation-x={-Math.PI * 0.5}
       scale={10}
