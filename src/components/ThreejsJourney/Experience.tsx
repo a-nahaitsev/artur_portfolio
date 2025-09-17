@@ -6,13 +6,13 @@ import CustomEnvironment from "./CustomEnvironment";
 import CustomObject from "./CustomObject";
 import CustomPivotControls from "./CustomPivotControls";
 import CustomSky from "./CustomSky";
-import CustomText3D from "./CustomText3D";
 import FloatText from "./FloatText";
 import Fox from "./Fox";
 import { Hamburger } from "./Hamburger";
 import Lights from "./Lights";
 import Model from "./Model";
 import ModelPlaceholder from "./ModelPlaceholder";
+import PerfOverlay from "./PerfOverlay";
 import Plane from "./Plane";
 import Shadows from "./Shadows";
 import Sphere from "./Sphere";
@@ -23,8 +23,6 @@ import {
   useHelper,
 } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
-import { useControls } from "leva";
-import { Perf } from "r3f-perf";
 import React, { useRef, useState, Suspense } from "react";
 import * as THREE from "three";
 
@@ -36,10 +34,6 @@ const Experience = () => {
   const [sunPosition, setSunPosition] = useState([1, 2, 3]);
 
   useHelper(directionalLightRef, THREE.DirectionalLightHelper, 1);
-
-  const { perfVisible } = useControls({
-    perfVisible: true,
-  });
 
   useFrame((state, delta) => {
     // const angle = state.clock.elapsedTime;
@@ -59,7 +53,7 @@ const Experience = () => {
 
   return (
     <>
-      {perfVisible && <Perf position="bottom-right" />}
+      <PerfOverlay />
       <BackgroundColor color="ivory" />
       {/* <Shadows /> */}
       {/* <CustomEnvironment /> */}
@@ -94,13 +88,12 @@ const Experience = () => {
         fallback={<ModelPlaceholder position-y={1.5} scale={[2, 3, 2]} />}
       > */}
       {/* <Model /> */}
-      {/* <Hamburger scale={0.35} /> */}
+      <Hamburger scale={0.35} />
       {/* </Suspense> */}
       {/* <Fox /> */}
       {/* <Plane /> */}
       {/* <FloatText /> */}
       {/* <CustomObject /> */}
-      <CustomText3D />
     </>
   );
 };

@@ -1,6 +1,6 @@
 "use client";
 
-import { Theme } from "@/types";
+import { Theme } from "@/types/types";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 
