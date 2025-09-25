@@ -5,8 +5,8 @@ const Lights = ({
   directionalLightRef,
   sunPosition,
 }: {
-  directionalLightRef: React.RefObject<THREE.DirectionalLight>;
-  sunPosition: [number, number, number];
+  directionalLightRef?: React.RefObject<THREE.DirectionalLight>;
+  sunPosition?: [number, number, number] | undefined;
 }) => {
   return (
     <>

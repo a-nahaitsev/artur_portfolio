@@ -1,5 +1,3 @@
-// @ts-nocheck
-// TODO: Remove once types are properly fixed
 import BackgroundColor from "./BackgroundColor";
 import Cube from "./Cube";
 import CustomEnvironment from "./CustomEnvironment";
@@ -28,9 +26,9 @@ import * as THREE from "three";
 
 const Experience = () => {
   const groupRef = useRef<THREE.Group>(null);
-  const cubeRef = useRef<THREE.Mesh>(null);
-  const sphereRef = useRef<THREE.Mesh>(null);
-  const directionalLightRef = useRef<THREE.DirectionalLight>(null);
+  const cubeRef = useRef<THREE.Mesh>(null!);
+  const sphereRef = useRef<THREE.Mesh>(null!);
+  const directionalLightRef = useRef<THREE.DirectionalLight>(null!);
   const [sunPosition, setSunPosition] = useState([1, 2, 3]);
 
   useHelper(directionalLightRef, THREE.DirectionalLightHelper, 1);
