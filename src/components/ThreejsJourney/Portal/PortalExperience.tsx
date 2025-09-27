@@ -1,4 +1,4 @@
-import BackgroundColor from "../BackgroundColor";
+import BackgroundColor from "../../../shared/Threejs/BackgroundColor";
 import PerfOverlay from "../PerfOverlay";
 import portalFragmentShader from "@/shaders/portal/fragment.glsl";
 import portalVertexShader from "@/shaders/portal/vertex.glsl";

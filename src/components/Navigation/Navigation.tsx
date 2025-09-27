@@ -8,15 +8,18 @@ const Navigation = () => {
         <li>
           <Link href="/">Home</Link>
         </li>
-        <li>
+        {/* <li>
           <Link href="/experiments">Experiments</Link>
-        </li>
+        </li> */}
         <li>
           <Link href="/threejs-journey">ThreeJS Journey</Link>
         </li>
-        <li>
+        {/* <li>
+          <Link href="/3d-portfolio">3D Portfolio</Link>
+        </li> */}
+        {/* <li>
           <Link href="/contact">Contact</Link>
-        </li>
+        </li> */}
       </ul>
     </nav>
   );

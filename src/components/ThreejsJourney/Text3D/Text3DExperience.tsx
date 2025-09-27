@@ -1,4 +1,4 @@
-import BackgroundColor from "../BackgroundColor";
+import BackgroundColor from "../../../shared/Threejs/BackgroundColor";
 import PerfOverlay from "../PerfOverlay";
 import CustomText3D from "./CustomText3D";
 import { OrbitControls } from "@react-three/drei";

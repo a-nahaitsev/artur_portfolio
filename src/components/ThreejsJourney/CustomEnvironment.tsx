@@ -1,4 +1,4 @@
-import BackgroundColor from "./BackgroundColor";
+import BackgroundColor from "../../shared/Threejs/BackgroundColor";
 import { Environment, Lightformer } from "@react-three/drei";
 import { useThree } from "@react-three/fiber";
 import { useControls } from "leva";

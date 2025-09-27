@@ -1,0 +1,47 @@
+import { Sphere, useScroll } from "@react-three/drei";
+import { useFrame } from "@react-three/fiber";
+import { gsap } from "gsap";
+import { useEffect, useRef } from "react";
+import * as THREE from "three";
+
+export const Background = () => {
+  const material = useRef<THREE.MeshBasicMaterial>(null!);
+  const color = useRef({
+    color: "#b9bcff",
+  });
+  const data = useScroll();
+
+  const tl = useRef<GSAPTimeline>(null);
+
+  useFrame(() => {
+    if (!tl.current) return;
+
+    tl.current.progress(data.offset);
+    material.current.color = new THREE.Color(color.current.color);
+  });
+
+  useEffect(() => {
+    tl.current = gsap.timeline();
+    tl.current.to(color.current, {
+      color: "#212121",
+    });
+    tl.current.to(color.current, {
+      color: "#7a7ca5",
+    });
+    tl.current.to(color.current, {
+      color: "#9b96dd",
+    });
+  }, []);
+
+  return (
+    <group>
+      <Sphere scale={[30, 30, 30]}>
+        <meshBasicMaterial
+          ref={material}
+          side={THREE.BackSide}
+          toneMapped={false}
+        />
+      </Sphere>
+    </group>
+  );
+};

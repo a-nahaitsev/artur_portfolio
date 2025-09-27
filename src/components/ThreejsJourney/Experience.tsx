@@ -1,4 +1,4 @@
-import BackgroundColor from "./BackgroundColor";
+import BackgroundColor from "../../shared/Threejs/BackgroundColor";
 import Cube from "./Cube";
 import CustomEnvironment from "./CustomEnvironment";
 import CustomObject from "./CustomObject";

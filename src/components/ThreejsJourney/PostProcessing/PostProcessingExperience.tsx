@@ -1,4 +1,4 @@
-import BackgroundColor from "../BackgroundColor";
+import BackgroundColor from "../../../shared/Threejs/BackgroundColor";
 import Cube from "../Cube";
 import CustomPostProcessing from "../CustomPostProcessing";
 import Lights from "../Lights";
