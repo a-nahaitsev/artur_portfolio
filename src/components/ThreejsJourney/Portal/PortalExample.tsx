@@ -1,8 +1,14 @@
 import PortalExperience from "./PortalExperience";
+import PortalExperience2 from "./PortalExperience2";
 import { Canvas } from "@react-three/fiber";
+import { useControls } from "leva";
 import React from "react";
 
 const PortalExample = () => {
+  const { alternative } = useControls("portal", {
+    alternative: false,
+  });
+
   return (
     <Canvas
       flat // noToneMapping applied
@@ -14,7 +20,7 @@ const PortalExample = () => {
         position: [1, 2, 6],
       }}
     >
-      <PortalExperience />
+      {alternative ? <PortalExperience2 /> : <PortalExperience />}
     </Canvas>
   );
 };

@@ -14,12 +14,12 @@ const Hero: FC<HeroProps> = ({ slice }) => {
       className="min-h-[calc(100vh-40px)] flex items-center"
     >
       <div className="px-8 max-w-screen-2xl mx-auto flex flex-col gap-4 w-full">
-        <h1 className="text-7xl font-bold max-w-2xl">
+        <div className="text-7xl font-bold max-w-2xl">
           <PrismicRichText field={title} />
-        </h1>
-        <p className="max-w-2xl">
+        </div>
+        <div className="max-w-2xl">
           <PrismicRichText field={description} />
-        </p>
+        </div>
         <PrismicNextLink field={button} />
       </div>
     </section>
