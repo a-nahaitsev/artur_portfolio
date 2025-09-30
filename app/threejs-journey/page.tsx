@@ -32,7 +32,7 @@ const ThreeJSJourneyPage = () => {
 
   return (
     <div className="fixed inset-0 overflow-hidden w-full h-full">
-      <Leva  collapsed />
+      <Leva collapsed={false} />
       <div className="fixed bottom-20 left-4 z-50 flex flex-col gap-2">
         {buttonNames.map((name) => (
           <button

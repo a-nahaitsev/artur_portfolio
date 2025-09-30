@@ -1,3 +1,5 @@
+import Drunk from "./PostProcessing/Drunk";
+import { ThreeElements } from "@react-three/fiber";
 import {
   EffectComposer,
   ToneMapping,
@@ -9,11 +11,11 @@ import {
 } from "@react-three/postprocessing";
 import { useControls } from "leva";
 import { ToneMappingMode, BlendFunction, GlitchMode } from "postprocessing";
-import React, { JSX, useEffect } from "react";
+import React, { JSX, useEffect, useRef } from "react";
 import * as THREE from "three";
 
 const TONE_MAPPING_DEAULT_MODE = "ACES_FILMIC";
-const BLEND_FUNCTION_DEFAULT_MODE = "SKIP";
+const BLEND_FUNCTION_DEFAULT_MODE = "DARKEN";
 const GLITCH_MODE_DEFAULT_MODE = "DISABLED";
 
 enum Effect {
@@ -23,6 +25,7 @@ enum Effect {
   NOISE = "NOISE",
   BLOOM = "BLOOM",
   DEPTH_OF_FIELD = "DEPTH OF FIELD",
+  DRUNK = "DRUNK (CUSTOM)",
 }
 
 const CustomPostProcessing = ({
@@ -30,32 +33,42 @@ const CustomPostProcessing = ({
 }: {
   setIsWhite: (isWhite: boolean) => void;
 }) => {
-  const { toneMappingMode, effect, blendFunction, bloomIntensity, glitchMode } =
-    useControls("postprocessing", {
-      toneMappingMode: {
-        options: Object.keys(ToneMappingMode),
-        value: Object.keys(ToneMappingMode).find(
-          (key) => key === TONE_MAPPING_DEAULT_MODE,
-        ),
-      },
-      effect: {
-        options: Object.keys(Effect),
-        value: Effect.VIGNETTE,
-      },
-      blendFunction: {
-        options: Object.keys(BlendFunction),
-        value: Object.keys(BlendFunction).find(
-          (key) => key === BLEND_FUNCTION_DEFAULT_MODE,
-        ),
-      },
-      glitchMode: {
-        options: Object.keys(GlitchMode),
-        value: Object.keys(GlitchMode).find(
-          (key) => key === GLITCH_MODE_DEFAULT_MODE,
-        ),
-      },
-      bloomIntensity: { value: 0.5, min: 0, max: 1 },
-    });
+  const drunkRef = useRef<ThreeElements["primitive"]>(null!);
+  const {
+    toneMappingMode,
+    effect,
+    blendFunction,
+    bloomIntensity,
+    glitchMode,
+    drunkFrequency,
+    drunkAmplitude,
+  } = useControls("postprocessing", {
+    toneMappingMode: {
+      options: Object.keys(ToneMappingMode),
+      value: Object.keys(ToneMappingMode).find(
+        (key) => key === TONE_MAPPING_DEAULT_MODE,
+      ),
+    },
+    effect: {
+      options: Object.values(Effect),
+      value: Effect.VIGNETTE,
+    },
+    blendFunction: {
+      options: Object.keys(BlendFunction),
+      value: Object.keys(BlendFunction).find(
+        (key) => key === BLEND_FUNCTION_DEFAULT_MODE,
+      ),
+    },
+    glitchMode: {
+      options: Object.keys(GlitchMode),
+      value: Object.keys(GlitchMode).find(
+        (key) => key === GLITCH_MODE_DEFAULT_MODE,
+      ),
+    },
+    bloomIntensity: { value: 0.5, min: 0, max: 1 },
+    drunkFrequency: { value: 2, min: 1, max: 20 },
+    drunkAmplitude: { value: 0.1, min: 0, max: 1 },
+  });
 
   useEffect(() => {
     setIsWhite(effect !== Effect.BLOOM);
@@ -107,6 +120,18 @@ const CustomPostProcessing = ({
             focusDistance={0.025}
             focalLength={0.025}
             bokehScale={6}
+          />
+        )) as JSX.Element
+      }
+      {
+        (effect === Effect.DRUNK && (
+          <Drunk
+            ref={drunkRef}
+            frequency={drunkFrequency}
+            amplitude={drunkAmplitude}
+            blendFunction={
+              BlendFunction[blendFunction as keyof typeof BlendFunction]
+            }
           />
         )) as JSX.Element
       }
