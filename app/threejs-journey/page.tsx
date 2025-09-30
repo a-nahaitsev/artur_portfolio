@@ -3,6 +3,7 @@
 import Experience from "@/components/ThreejsJourney/Experience";
 import MouseEventsExample from "@/components/ThreejsJourney/MouseEvents/MouseEventsExample";
 import PortalExample from "@/components/ThreejsJourney/Portal/PortalExample";
+import PortfolioExample from "@/components/ThreejsJourney/Portfolio/PortfolioExample";
 import PostProcessingExample from "@/components/ThreejsJourney/PostProcessing/PostProcessingExample";
 import Text3DExample from "@/components/ThreejsJourney/Text3D/Text3DExample";
 import { cn } from "@/utils/cn";
@@ -17,13 +18,14 @@ enum ButtonName {
   Portal = "Portal",
   MouseEvents = "MouseEvents",
   PostProcessing = "PostProcessing",
+  Portfolio = "Portfolio",
 }
 
 const buttonNames = Object.values(ButtonName);
 
 const ThreeJSJourneyPage = () => {
   const [buttonName, setButtonName] = useState<ButtonName>(
-    ButtonName.PostProcessing,
+    ButtonName.Portfolio,
   );
   // const created = ({ scene, gl }: any) => {
   //   // gl.setClearColor("#9a73e1");
@@ -71,6 +73,7 @@ const ThreeJSJourneyPage = () => {
       {buttonName === ButtonName.Portal && <PortalExample />}
       {buttonName === ButtonName.MouseEvents && <MouseEventsExample />}
       {buttonName === ButtonName.PostProcessing && <PostProcessingExample />}
+      {buttonName === ButtonName.Portfolio && <PortfolioExample />}
     </div>
   );
 };

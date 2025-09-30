@@ -22,13 +22,25 @@ body {
 
 .label > div
 {
-    font-family: Helvetica, Arial;
-    position: absolute;
-    background: #00000088;
-    color: white;
-    padding: 15px;
-    white-space: nowrap;
-    overflow: hidden;
-    border-radius: 30px;
-    user-select: none;
+  font-family: Helvetica, Arial;
+  position: absolute;
+  background: #00000088;
+  color: white;
+  padding: 15px;
+  white-space: nowrap;
+  overflow: hidden;
+  border-radius: 30px;
+  user-select: none;
+}
+
+.threejs-journey-portfolio-canvas {
+  touch-action: none;
+}
+
+.threejs-journey-portfolio-html-screen iframe {
+  width: 1024px;
+  height: 670px;
+  border: none;
+  border-radius: 20px;
+  background: #000;
 }
