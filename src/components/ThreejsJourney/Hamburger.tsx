@@ -21,6 +21,7 @@ export function Hamburger(props: JSX.IntrinsicElements["group"]) {
   const { nodes, materials } = useGLTF(
     "./hamburger-draco.glb",
   ) as unknown as GLTFResult;
+
   return (
     <group {...props} dispose={null}>
       <mesh

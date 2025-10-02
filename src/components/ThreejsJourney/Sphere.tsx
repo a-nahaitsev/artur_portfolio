@@ -6,22 +6,30 @@ import * as THREE from "three";
 type SphereProps = ThreeElements["mesh"] & {
   sphereRef: React.RefObject<THREE.Mesh>;
   cubeRef: React.RefObject<THREE.Mesh>;
+  disableHtmlLabel?: boolean;
 };
 
-const Sphere = ({ sphereRef, cubeRef, ...props }: SphereProps) => {
+const Sphere = ({
+  sphereRef,
+  cubeRef,
+  disableHtmlLabel = false,
+  ...props
+}: SphereProps) => {
   return (
     <mesh castShadow position-x={-2} position-y={1} ref={sphereRef} {...props}>
       <sphereGeometry />
       <meshStandardMaterial color="orange" />
-      <Html
-        position={[1, 1, 0]}
-        wrapperClass="label"
-        center
-        distanceFactor={6}
-        occlude={[sphereRef, cubeRef]}
-      >
-        That's a sphere
-      </Html>
+      {!disableHtmlLabel && (
+        <Html
+          position={[1, 1, 0]}
+          wrapperClass="label"
+          center
+          distanceFactor={6}
+          occlude={[sphereRef, cubeRef]}
+        >
+          That's a sphere
+        </Html>
+      )}
     </mesh>
   );
 };

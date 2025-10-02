@@ -1,7 +1,16 @@
 import React from "react";
 
-const Plane = () => {
-  return (
+type PlaneProps = {
+  withHeight?: boolean;
+};
+
+const Plane = ({ withHeight = false }: PlaneProps) => {
+  return withHeight ? (
+    <mesh receiveShadow position-y={-1.25}>
+      <boxGeometry args={[10, 0.5, 10]} />
+      <meshStandardMaterial color="greenyellow" />
+    </mesh>
+  ) : (
     <mesh
       receiveShadow // comment it using AccumulativeShadows
       position-y={0}

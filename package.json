@@ -17,6 +17,7 @@
     "@react-three/drei": "^10.7.5",
     "@react-three/fiber": "^9.3.0",
     "@react-three/postprocessing": "^3.0.4",
+    "@react-three/rapier": "^2.1.0",
     "@trivago/prettier-plugin-sort-imports": "^5.2.2",
     "@types/three": "^0.180.0",
     "clsx": "^2.1.1",
