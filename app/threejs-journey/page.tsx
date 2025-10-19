@@ -1,6 +1,7 @@
 "use client";
 
 import Experience from "@/components/ThreejsJourney/Experience";
+import GameExample from "@/components/ThreejsJourney/Game/GameExample";
 import MouseEventsExample from "@/components/ThreejsJourney/MouseEvents/MouseEventsExample";
 import PhysicsExample from "@/components/ThreejsJourney/Physics/PhysicsExample";
 import PortalExample from "@/components/ThreejsJourney/Portal/PortalExample";
@@ -21,12 +22,13 @@ enum ButtonName {
   PostProcessing = "PostProcessing",
   Portfolio = "Portfolio",
   Physics = "Physics",
+  Game = "Game",
 }
 
 const buttonNames = Object.values(ButtonName);
 
 const ThreeJSJourneyPage = () => {
-  const [buttonName, setButtonName] = useState<ButtonName>(ButtonName.Physics);
+  const [buttonName, setButtonName] = useState<ButtonName>(ButtonName.Game);
   // const created = ({ scene, gl }: any) => {
   //   // gl.setClearColor("#9a73e1");
   //   scene.background = new THREE.Color("#0073e1");
@@ -75,6 +77,7 @@ const ThreeJSJourneyPage = () => {
       {buttonName === ButtonName.PostProcessing && <PostProcessingExample />}
       {buttonName === ButtonName.Portfolio && <PortfolioExample />}
       {buttonName === ButtonName.Physics && <PhysicsExample />}
+      {buttonName === ButtonName.Game && <GameExample />}
     </div>
   );
 };

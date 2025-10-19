@@ -67,9 +67,9 @@ const PhysicsExperience = () => {
   };
 
   useFrame((state) => {
-    const time = state.clock.getElapsedTime();
-
     if (!twisterRef.current) return;
+
+    const time = state.clock.getElapsedTime();
 
     const eulerRotation = new THREE.Euler(0, time * 3, 0);
     const quaternionRotation = new THREE.Quaternion();
