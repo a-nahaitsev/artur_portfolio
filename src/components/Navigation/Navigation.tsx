@@ -14,6 +14,9 @@ const Navigation = () => {
         <li>
           <Link href="/threejs-journey">ThreeJS Journey</Link>
         </li>
+        <li>
+          <Link href="/luxury-homepage">Luxury</Link>
+        </li>
         {/* <li>
           <Link href="/3d-portfolio">3D Portfolio</Link>
         </li> */}

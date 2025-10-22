@@ -1,4 +1,4 @@
-import CommonLayout from "@/layouts/Common";
+import LuxuryLayout from "@/layouts/Luxury";
 import { createClient } from "@/prismicio";
 import { components } from "@/slices";
 import { asImageSrc } from "@prismicio/client";
@@ -6,22 +6,24 @@ import { SliceZone } from "@prismicio/react";
 import { type Metadata } from "next";
 import { notFound } from "next/navigation";
 
-const Home = async () => {
+const LuxuryHomepage = async () => {
   const client = createClient();
-  const page = await client.getSingle("homepage").catch(() => notFound());
+  const page = await client
+    .getSingle("luxury_homepage")
+    .catch(() => notFound());
 
   return (
-    <CommonLayout>
+    <LuxuryLayout>
       <SliceZone slices={page.data.slices} components={components} />
-    </CommonLayout>
+    </LuxuryLayout>
   );
 };
 
-export default Home;
-
 export async function generateMetadata(): Promise<Metadata> {
   const client = createClient();
-  const page = await client.getSingle("homepage").catch(() => notFound());
+  const page = await client
+    .getSingle("luxury_homepage")
+    .catch(() => notFound());
 
   return {
     title: page.data.meta_title,
@@ -31,3 +33,5 @@ export async function generateMetadata(): Promise<Metadata> {
     },
   };
 }
+
+export default LuxuryHomepage;

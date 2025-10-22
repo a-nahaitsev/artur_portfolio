@@ -19,7 +19,7 @@ const Header = () => {
     <div className="px-8 max-w-screen-2xl mx-auto relative z-[1]">
       <div
         className={cn(
-          "flex flex-wrap gap-8 items-center rounded-b-xl py-2 px-8",
+          "flex flex-wrap gap-20 items-center rounded-b-xl py-2 px-8",
           theme === Theme.Dark ? "bg-black/50" : "bg-gray-100",
         )}
       >

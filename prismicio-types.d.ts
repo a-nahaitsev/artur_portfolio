@@ -27,7 +27,8 @@ type PickContentRelationshipFieldData<
       TSubRelationship["customtypes"],
       TLang
     >;
-  } & { // Group
+  } & // Group
+  {
     [TGroup in Extract<
       TRelationship["fields"][number],
       | prismic.CustomTypeModelFetchGroupLevel1
@@ -39,7 +40,8 @@ type PickContentRelationshipFieldData<
           PickContentRelationshipFieldData<TGroup, TGroupData, TLang>
         >
       : never;
-  } & { // Other fields
+  } & // Other fields
+  {
     [TFieldKey in Extract<
       TRelationship["fields"][number],
       string
@@ -131,7 +133,74 @@ export type HomepageDocument<Lang extends string = string> =
     Lang
   >;
 
-export type AllDocumentTypes = HomepageDocument;
+type LuxuryHomepageDocumentDataSlicesSlice =
+  | LuxuryScrollTextSlice
+  | LuxuryHeroSlice;
+
+/**
+ * Content for luxury-homepage documents
+ */
+interface LuxuryHomepageDocumentData {
+  /**
+   * Slice Zone field in *luxury-homepage*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: luxury_homepage.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/slices
+   */
+  slices: prismic.SliceZone<LuxuryHomepageDocumentDataSlicesSlice> /**
+   * Meta Title field in *luxury-homepage*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: luxury_homepage.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */;
+  meta_title: prismic.KeyTextField;
+
+  /**
+   * Meta Description field in *luxury-homepage*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: luxury_homepage.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *luxury-homepage*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: luxury_homepage.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  meta_image: prismic.ImageField<never>;
+}
+
+/**
+ * luxury-homepage document from Prismic
+ *
+ * - **API ID**: `luxury_homepage`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/content-modeling
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type LuxuryHomepageDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<LuxuryHomepageDocumentData>,
+    "luxury_homepage",
+    Lang
+  >;
+
+export type AllDocumentTypes = HomepageDocument | LuxuryHomepageDocument;
 
 /**
  * Primary content in *Hero → Default → Primary*
@@ -195,6 +264,144 @@ type HeroSliceVariation = HeroSliceDefault;
  */
 export type HeroSlice = prismic.SharedSlice<"hero", HeroSliceVariation>;
 
+/**
+ * Primary content in *LuxuryHero → Default → Primary*
+ */
+export interface LuxuryHeroSliceDefaultPrimary {
+  /**
+   * Heading field in *LuxuryHero → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: luxury_hero.default.primary.heading
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  heading: prismic.RichTextField;
+
+  /**
+   * Body field in *LuxuryHero → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: luxury_hero.default.primary.body
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  body: prismic.RichTextField;
+
+  /**
+   * Button field in *LuxuryHero → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: luxury_hero.default.primary.button
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  button: prismic.Repeatable<
+    prismic.LinkField<
+      string,
+      string,
+      unknown,
+      prismic.FieldState,
+      "Primary" | "Secondary"
+    >
+  >;
+
+  /**
+   * Image field in *LuxuryHero → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: luxury_hero.default.primary.image
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  image: prismic.ImageField<never>;
+}
+
+/**
+ * Default variation for LuxuryHero Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type LuxuryHeroSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<LuxuryHeroSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *LuxuryHero*
+ */
+type LuxuryHeroSliceVariation = LuxuryHeroSliceDefault;
+
+/**
+ * LuxuryHero Shared Slice
+ *
+ * - **API ID**: `luxury_hero`
+ * - **Description**: LuxuryHero
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type LuxuryHeroSlice = prismic.SharedSlice<
+  "luxury_hero",
+  LuxuryHeroSliceVariation
+>;
+
+/**
+ * Primary content in *LuxuryScrollText → Default → Primary*
+ */
+export interface LuxuryScrollTextSliceDefaultPrimary {
+  /**
+   * Eyebrow field in *LuxuryScrollText → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: luxury_scroll_text.default.primary.eyebrow
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  eyebrow: prismic.KeyTextField;
+
+  /**
+   * Text field in *LuxuryScrollText → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: luxury_scroll_text.default.primary.text
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  text: prismic.RichTextField;
+}
+
+/**
+ * Default variation for LuxuryScrollText Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type LuxuryScrollTextSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<LuxuryScrollTextSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *LuxuryScrollText*
+ */
+type LuxuryScrollTextSliceVariation = LuxuryScrollTextSliceDefault;
+
+/**
+ * LuxuryScrollText Shared Slice
+ *
+ * - **API ID**: `luxury_scroll_text`
+ * - **Description**: LuxuryScrollText
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type LuxuryScrollTextSlice = prismic.SharedSlice<
+  "luxury_scroll_text",
+  LuxuryScrollTextSliceVariation
+>;
+
 declare module "@prismicio/client" {
   interface CreateClient {
     (
@@ -219,11 +426,22 @@ declare module "@prismicio/client" {
       HomepageDocument,
       HomepageDocumentData,
       HomepageDocumentDataSlicesSlice,
+      LuxuryHomepageDocument,
+      LuxuryHomepageDocumentData,
+      LuxuryHomepageDocumentDataSlicesSlice,
       AllDocumentTypes,
       HeroSlice,
       HeroSliceDefaultPrimary,
       HeroSliceVariation,
       HeroSliceDefault,
+      LuxuryHeroSlice,
+      LuxuryHeroSliceDefaultPrimary,
+      LuxuryHeroSliceVariation,
+      LuxuryHeroSliceDefault,
+      LuxuryScrollTextSlice,
+      LuxuryScrollTextSliceDefaultPrimary,
+      LuxuryScrollTextSliceVariation,
+      LuxuryScrollTextSliceDefault,
     };
   }
 }
