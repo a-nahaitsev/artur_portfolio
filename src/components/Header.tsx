@@ -1,11 +1,11 @@
 "use client";
 
-import Navigation from "./Navigation/Navigation";
-import ThemeSwitcher from "./ThemeSwitcher/ThemeSwitcher";
 import { Theme } from "@/types/types";
 import { cn } from "@/utils/cn";
 import { useTheme } from "next-themes";
-import React, { useState, useEffect } from "react";
+import ThemeSwitcher from "./ThemeSwitcher/ThemeSwitcher";
+import { useEffect, useState } from "react";
+import Navigation from "./Navigation/Navigation";
 
 const Header = () => {
   const { theme } = useTheme();
@@ -16,10 +16,10 @@ const Header = () => {
   if (!mounted) return null;
 
   return (
-    <div className="px-8 max-w-screen-2xl mx-auto relative z-[1]">
+    <div className="relative z-[1] mx-auto max-w-screen-2xl px-8">
       <div
         className={cn(
-          "flex flex-wrap gap-20 items-center rounded-b-xl py-2 px-8",
+          "flex flex-wrap items-center gap-20 rounded-b-xl px-8 py-2",
           theme === Theme.Dark ? "bg-black/50" : "bg-gray-100",
         )}
       >

@@ -1,12 +1,16 @@
-import { cn } from '@/utils/cn'
-import { PrismicNextLink, PrismicNextLinkProps } from '@prismicio/next'
-import React from 'react'
+import { cn } from "@/utils/cn";
+import { PrismicNextLink, PrismicNextLinkProps } from "@prismicio/next";
+import React from "react";
 
 export type ButtonLinkProps = PrismicNextLinkProps & {
-  variant?: "Primary" | "Secondary"
-}
+  variant?: "Primary" | "Secondary";
+};
 
-const ButtonLink = ({ className, variant = "Primary", ...restProps }: ButtonLinkProps) => {
+const ButtonLink = ({
+  className,
+  variant = "Primary",
+  ...restProps
+}: ButtonLinkProps) => {
   return (
     <PrismicNextLink
       className={cn(
@@ -18,7 +22,7 @@ const ButtonLink = ({ className, variant = "Primary", ...restProps }: ButtonLink
       )}
       {...restProps}
     />
-  )
-}
+  );
+};
 
-export default ButtonLink
+export default ButtonLink;

@@ -3,8 +3,8 @@
 import { cn } from "@/utils/cn";
 import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";
-import React, { useRef } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import React, { useRef } from "react";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -15,7 +15,12 @@ interface FadeInProps {
   className?: string;
 }
 
-const FadeIn = ({ children, start = "top 80%", vars = {}, className }: FadeInProps) => {
+const FadeIn = ({
+  children,
+  start = "top 80%",
+  vars = {},
+  className,
+}: FadeInProps) => {
   const ref = useRef<HTMLDivElement>(null);
 
   useGSAP(
