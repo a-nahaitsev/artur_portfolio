@@ -15,7 +15,6 @@ export type LuxuryProductFeatureProps =
   SliceComponentProps<Content.LuxuryProductFeatureSlice>;
 
 const LuxuryProductFeature: FC<LuxuryProductFeatureProps> = ({ slice }) => {
-
   return (
     <Bounded
       data-slice-type={slice.slice_type}
@@ -34,10 +33,10 @@ const LuxuryProductFeature: FC<LuxuryProductFeatureProps> = ({ slice }) => {
           />
         </FadeIn>
         <FadeIn className="translate-y-16 space-y-6 self-start bg-white/10 p-10 opacity-0 lg:col-start-3 lg:row-start-1">
-          <h2 className="text-3xl font-semibold leading-tight md:text-4xl">
+          <h2 className="text-3xl leading-tight font-semibold md:text-4xl">
             <PrismicText field={slice.primary.heading} />
           </h2>
-          <div className="text-base max-w-lg text-gray-300">
+          <div className="max-w-lg text-base text-gray-300">
             <PrismicRichText field={slice.primary.description} />
           </div>
         </FadeIn>
@@ -45,7 +44,7 @@ const LuxuryProductFeature: FC<LuxuryProductFeatureProps> = ({ slice }) => {
         {/* Fragrance */}
         {isFilled.contentRelationship(slice.primary.fragrance) && (
           <FadeIn
-            className="animate-in opacity-0 relative translate-y-16 self-end bg-white/10 will-change-transform"
+            className="animate-in relative translate-y-16 self-end bg-white/10 opacity-0 will-change-transform"
             vars={{ duration: 1, delay: 1 }}
           >
             <PrismicNextImage
@@ -61,7 +60,11 @@ const LuxuryProductFeature: FC<LuxuryProductFeatureProps> = ({ slice }) => {
                   />
                 </h3>
                 <p className="mt-2 text-gray-400">Eau de Parfum</p>
-                <ButtonLink field={slice.primary.fragrance} variant="Secondary" className="mt-6">
+                <ButtonLink
+                  field={slice.primary.fragrance}
+                  variant="Secondary"
+                  className="mt-6"
+                >
                   Shop Now
                 </ButtonLink>
               </div>

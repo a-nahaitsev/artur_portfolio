@@ -7,14 +7,15 @@ export type HeroProps = SliceComponentProps<Content.HeroSlice>;
 
 const Hero: FC<HeroProps> = ({ slice }) => {
   const { title, description, button } = slice.primary;
+
   return (
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="min-h-[calc(100vh-40px)] flex items-center"
+      className="flex min-h-[calc(100vh-40px)] items-center"
     >
-      <div className="px-8 max-w-screen-2xl mx-auto flex flex-col gap-4 w-full">
-        <div className="text-7xl font-bold max-w-2xl">
+      <div className="mx-auto flex w-full max-w-screen-2xl flex-col gap-4 px-8">
+        <div className="max-w-2xl text-7xl font-bold">
           <PrismicRichText field={title} />
         </div>
         <div className="max-w-2xl">

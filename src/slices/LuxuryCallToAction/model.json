@@ -1,8 +1,8 @@
 {
-  "id": "luxury_product_feature",
+  "id": "luxury_call_to_action",
   "type": "SharedSlice",
-  "name": "LuxuryProductFeature",
-  "description": "LuxuryProductFeature",
+  "name": "LuxuryCallToAction",
+  "description": "LuxuryCallToAction",
   "variations": [
     {
       "id": "default",
@@ -12,6 +12,13 @@
       "description": "Default",
       "imageUrl": "",
       "primary": {
+        "eyebrow": {
+          "type": "Text",
+          "config": {
+            "label": "Eyebrow",
+            "placeholder": ""
+          }
+        },
         "heading": {
           "type": "StructuredText",
           "config": {
@@ -21,39 +28,27 @@
             "single": "heading2"
           }
         },
-        "description": {
+        "body": {
           "type": "StructuredText",
           "config": {
-            "label": "Description",
+            "label": "Body",
             "placeholder": "",
             "allowTargetBlank": true,
             "multi": "paragraph,strong,em"
           }
         },
-        "image": {
-          "type": "Image",
-          "config": {
-            "label": "Feature Image",
-            "constraint": {},
-            "thumbnails": []
-          }
-        },
-        "fragrance": {
+        "button": {
           "type": "Link",
           "config": {
-            "label": "Fragrance",
-            "select": "document",
-            "repeat": false,
-            "customtypes": [
-              {
-                "id": "luxury_fragrance",
-                "fields": [
-                  "title",
-                  "bottle_image",
-                  "price",
-                  "meta_image"
-                ]
-              }
+            "label": "Button",
+            "placeholder": "",
+            "select": null,
+            "allowTargetBlank": true,
+            "allowText": true,
+            "repeat": true,
+            "variants": [
+              "Primary",
+              "Secondary"
             ]
           }
         }
