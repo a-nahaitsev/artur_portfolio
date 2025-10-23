@@ -11,6 +11,9 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "luxury_product_feature": {
+              "type": "SharedSlice"
+            },
             "luxury_scroll_text": {
               "type": "SharedSlice"
             },

@@ -4,5 +4,6 @@ import dynamic from "next/dynamic";
 export const components = {
   hero: dynamic(() => import("./Hero")),
   luxury_hero: dynamic(() => import("./LuxuryHero")),
+  luxury_product_feature: dynamic(() => import("./LuxuryProductFeature")),
   luxury_scroll_text: dynamic(() => import("./LuxuryScrollText")),
 };

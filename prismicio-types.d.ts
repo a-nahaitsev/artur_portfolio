@@ -133,7 +133,130 @@ export type HomepageDocument<Lang extends string = string> =
     Lang
   >;
 
+type LuxuryFragranceDocumentDataSlicesSlice = never;
+
+/**
+ * Content for luxury-fragrance documents
+ */
+interface LuxuryFragranceDocumentData {
+  /**
+   * Title field in *luxury-fragrance*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: luxury_fragrance.title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * Bottle Image field in *luxury-fragrance*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: luxury_fragrance.bottle_image
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  bottle_image: prismic.ImageField<never>;
+
+  /**
+   * Feature Image field in *luxury-fragrance*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: luxury_fragrance.feature_image
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  feature_image: prismic.ImageField<never>;
+
+  /**
+   * Description field in *luxury-fragrance*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: luxury_fragrance.description
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  description: prismic.RichTextField;
+
+  /**
+   * Price field in *luxury-fragrance*
+   *
+   * - **Field Type**: Number
+   * - **Placeholder**: (in cents)
+   * - **API ID Path**: luxury_fragrance.price
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/number
+   */
+  price: prismic.NumberField;
+
+  /**
+   * Scent Profile field in *luxury-fragrance*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: spicy
+   * - **API ID Path**: luxury_fragrance.scent_profile
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/select
+   */
+  scent_profile: prismic.SelectField<"spicy" | "woody" | "fresh", "filled">;
+
+  /**
+   * Mood field in *luxury-fragrance*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: bold
+   * - **API ID Path**: luxury_fragrance.mood
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/select
+   */
+  mood: prismic.SelectField<"bold" | "grounded" | "refreshing", "filled">;
+
+  /**
+   * Slice Zone field in *luxury-fragrance*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: luxury_fragrance.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/slices
+   */
+  slices: prismic.SliceZone<LuxuryFragranceDocumentDataSlicesSlice> /**
+   * Meta Image field in *luxury-fragrance*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: luxury_fragrance.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */;
+  meta_image: prismic.ImageField<never>;
+}
+
+/**
+ * luxury-fragrance document from Prismic
+ *
+ * - **API ID**: `luxury_fragrance`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/content-modeling
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type LuxuryFragranceDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<LuxuryFragranceDocumentData>,
+    "luxury_fragrance",
+    Lang
+  >;
+
 type LuxuryHomepageDocumentDataSlicesSlice =
+  | LuxuryProductFeatureSlice
   | LuxuryScrollTextSlice
   | LuxuryHeroSlice;
 
@@ -200,7 +323,10 @@ export type LuxuryHomepageDocument<Lang extends string = string> =
     Lang
   >;
 
-export type AllDocumentTypes = HomepageDocument | LuxuryHomepageDocument;
+export type AllDocumentTypes =
+  | HomepageDocument
+  | LuxuryFragranceDocument
+  | LuxuryHomepageDocument;
 
 /**
  * Primary content in *Hero → Default → Primary*
@@ -348,6 +474,97 @@ export type LuxuryHeroSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Primary content in *LuxuryProductFeature → Default → Primary*
+ */
+export interface LuxuryProductFeatureSliceDefaultPrimary {
+  /**
+   * Heading field in *LuxuryProductFeature → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: luxury_product_feature.default.primary.heading
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  heading: prismic.RichTextField;
+
+  /**
+   * Description field in *LuxuryProductFeature → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: luxury_product_feature.default.primary.description
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  description: prismic.RichTextField;
+
+  /**
+   * Feature Image field in *LuxuryProductFeature → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: luxury_product_feature.default.primary.image
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * Fragrance field in *LuxuryProductFeature → Default → Primary*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: luxury_product_feature.default.primary.fragrance
+   * - **Documentation**: https://prismic.io/docs/fields/content-relationship
+   */
+  fragrance: ContentRelationshipFieldWithData<
+    [
+      {
+        id: "luxury_fragrance";
+        fields: [
+          "title",
+          "bottle_image",
+          "feature_image",
+          "description",
+          "price",
+          "scent_profile",
+          "mood",
+          "meta_image",
+        ];
+      },
+    ]
+  >;
+}
+
+/**
+ * Default variation for LuxuryProductFeature Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type LuxuryProductFeatureSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<LuxuryProductFeatureSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *LuxuryProductFeature*
+ */
+type LuxuryProductFeatureSliceVariation = LuxuryProductFeatureSliceDefault;
+
+/**
+ * LuxuryProductFeature Shared Slice
+ *
+ * - **API ID**: `luxury_product_feature`
+ * - **Description**: LuxuryProductFeature
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type LuxuryProductFeatureSlice = prismic.SharedSlice<
+  "luxury_product_feature",
+  LuxuryProductFeatureSliceVariation
+>;
+
+/**
  * Primary content in *LuxuryScrollText → Default → Primary*
  */
 export interface LuxuryScrollTextSliceDefaultPrimary {
@@ -426,6 +643,9 @@ declare module "@prismicio/client" {
       HomepageDocument,
       HomepageDocumentData,
       HomepageDocumentDataSlicesSlice,
+      LuxuryFragranceDocument,
+      LuxuryFragranceDocumentData,
+      LuxuryFragranceDocumentDataSlicesSlice,
       LuxuryHomepageDocument,
       LuxuryHomepageDocumentData,
       LuxuryHomepageDocumentDataSlicesSlice,
@@ -438,6 +658,10 @@ declare module "@prismicio/client" {
       LuxuryHeroSliceDefaultPrimary,
       LuxuryHeroSliceVariation,
       LuxuryHeroSliceDefault,
+      LuxuryProductFeatureSlice,
+      LuxuryProductFeatureSliceDefaultPrimary,
+      LuxuryProductFeatureSliceVariation,
+      LuxuryProductFeatureSliceDefault,
       LuxuryScrollTextSlice,
       LuxuryScrollTextSliceDefaultPrimary,
       LuxuryScrollTextSliceVariation,

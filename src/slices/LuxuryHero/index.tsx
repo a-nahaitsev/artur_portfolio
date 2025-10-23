@@ -1,4 +1,5 @@
 import { Bounded } from "@/components/LuxuryPage/Bounded";
+import ButtonLink from "@/components/LuxuryPage/ButtonLink";
 import FadeIn from "@/components/LuxuryPage/FadeIn";
 import RevealText from "@/components/LuxuryPage/RevealText";
 import { AsElementType } from "@/components/LuxuryPage/types";
@@ -58,17 +59,7 @@ const LuxuryHero: FC<LuxuryHeroProps> = ({ slice }) => {
           vars={{ delay: 1.7, duration: 1.1 }}
         >
           {slice.primary.button.map((link) => (
-            <PrismicNextLink
-              key={link.key}
-              field={link}
-              className={cn(
-                "inline-flex items-center justify-center px-12 py-4 text-center font-extrabold tracking-wider uppercase transition-colors duration-300",
-                link.variant === "Secondary"
-                  ? "border border-white text-white hover:bg-white/20"
-                  : "bg-white text-black hover:bg-white/80",
-                "w-fit",
-              )}
-            />
+            <ButtonLink key={link.key} field={link} variant="Secondary" className="w-fit" />
           ))}
         </FadeIn>
       </div>
