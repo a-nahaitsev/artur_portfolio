@@ -63,3 +63,70 @@ html[id="luxury-layout"] .glow-background {
     radial-gradient(at 90% 5%, hsla(200, 80%, 5%, 0.2) 0px, transparent 50%),
     radial-gradient(at 90% 80%, hsla(230, 80%, 10%, 0.2) 0px, transparent 50%);
 }
+
+/* Animation Keyframes */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes fade-out {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.98);
+  }
+}
+
+/* Default View Transitions */
+::view-transition-old(root) {
+  animation: 0.5s cubic-bezier(0.33, 1, 0.68, 1) both fade-out;
+}
+
+::view-transition-new(root) {
+  animation: 0.8s cubic-bezier(0.22, 1, 0.36, 1) both fade-in;
+}
+
+/* Persistent Elements */
+.luxury-navbar {
+  view-transition-name: luxury-navbar;
+}
+
+.nav-drawer-blur {
+  view-transition-name: nav-drawer-blur;
+}
+
+.nav-drawer {
+  view-transition-name: nav-drawer;
+}
+
+.luxury-footer {
+  view-transition-name: luxury-footer;
+}
+
+::view-transition-old(luxury-navbar),
+::view-transition-new(luxury-navbar),
+::view-transition-old(luxury-footer),
+::view-transition-new(luxury-footer) {
+  animation: none;
+}
+
+/* Reduced Motion Preferences */
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition,
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation-duration: 0.001s;
+  }
+}
+

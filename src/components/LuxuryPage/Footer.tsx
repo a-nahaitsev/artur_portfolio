@@ -1,10 +1,13 @@
 import Image from "next/image";
-import Link from "next/link";
 import { ReactNode } from "react";
+import TransitionLink from "./TransitionLink";
 
 const Footer = () => {
   return (
-    <footer aria-labelledby="footer-heading" className="bg-black py-16">
+    <footer
+      aria-labelledby="footer-heading"
+      className="luxury-footer bg-black py-16"
+    >
       <h2 id="footer-heading" className="sr-only">
         Footer
       </h2>
@@ -34,8 +37,8 @@ const Footer = () => {
           <p className="text-center text-sm text-gray-400">
             © {new Date().getFullYear()} Côte Royale Inc. All rights reserved
           </p>
-          <Link
-            href="/"
+          <TransitionLink
+            href="/luxury-homepage"
             aria-label="Côte Royale Home"
             className="order-first md:order-none"
           >
@@ -45,20 +48,20 @@ const Footer = () => {
               width={150}
               height={25}
             />
-          </Link>
+          </TransitionLink>
           <ul
             aria-label="Legal"
             className="flex flex-wrap justify-center gap-6 text-sm text-gray-400"
           >
             <li>
-              <Link href="#" className="hover:text-white">
+              <a href="#" className="hover:text-white">
                 Terms &amp; conditions
-              </Link>
+              </a>
             </li>
             <li>
-              <Link href="#" className="hover:text-white">
+              <a href="#" className="hover:text-white">
                 Privacy Policy
-              </Link>
+              </a>
             </li>
           </ul>
         </div>
@@ -96,9 +99,9 @@ type NavLinkProps = {
 const NavLink = ({ href, children }: NavLinkProps) => {
   return (
     <li>
-      <Link href={href} className="hover:text-gray-300">
+      <TransitionLink href={href} className="hover:text-gray-300">
         {children}
-      </Link>
+      </TransitionLink>
     </li>
   );
 };
