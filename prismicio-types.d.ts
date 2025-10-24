@@ -257,6 +257,7 @@ export type LuxuryFragranceDocument<Lang extends string = string> =
   >;
 
 type LuxuryHomepageDocumentDataSlicesSlice =
+  | LuxuryVideoSlice
   | LuxuryCallToActionSlice
   | LuxuryFragranceListSlice
   | LuxuryProductFeatureSlice
@@ -802,6 +803,51 @@ export type LuxuryScrollTextSlice = prismic.SharedSlice<
   LuxuryScrollTextSliceVariation
 >;
 
+/**
+ * Primary content in *LuxuryVideo → Default → Primary*
+ */
+export interface LuxuryVideoSliceDefaultPrimary {
+  /**
+   * YouTube Video ID field in *LuxuryVideo → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: eTEsWseiDdg
+   * - **API ID Path**: luxury_video.default.primary.youtube_video_id
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  youtube_video_id: prismic.KeyTextField;
+}
+
+/**
+ * Default variation for LuxuryVideo Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type LuxuryVideoSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<LuxuryVideoSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *LuxuryVideo*
+ */
+type LuxuryVideoSliceVariation = LuxuryVideoSliceDefault;
+
+/**
+ * LuxuryVideo Shared Slice
+ *
+ * - **API ID**: `luxury_video`
+ * - **Description**: LuxuryVideo
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type LuxuryVideoSlice = prismic.SharedSlice<
+  "luxury_video",
+  LuxuryVideoSliceVariation
+>;
+
 declare module "@prismicio/client" {
   interface CreateClient {
     (
@@ -858,6 +904,10 @@ declare module "@prismicio/client" {
       LuxuryScrollTextSliceDefaultPrimary,
       LuxuryScrollTextSliceVariation,
       LuxuryScrollTextSliceDefault,
+      LuxuryVideoSlice,
+      LuxuryVideoSliceDefaultPrimary,
+      LuxuryVideoSliceVariation,
+      LuxuryVideoSliceDefault,
     };
   }
 }

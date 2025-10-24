@@ -11,6 +11,9 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "luxury_video": {
+              "type": "SharedSlice"
+            },
             "luxury_call_to_action": {
               "type": "SharedSlice"
             },

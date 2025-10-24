@@ -1,0 +1,26 @@
+{
+  "id": "luxury_video",
+  "type": "SharedSlice",
+  "name": "LuxuryVideo",
+  "description": "LuxuryVideo",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "youtube_video_id": {
+          "type": "Text",
+          "config": {
+            "label": "YouTube Video ID",
+            "placeholder": "eTEsWseiDdg"
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}
