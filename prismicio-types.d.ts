@@ -327,10 +327,29 @@ export type LuxuryHomepageDocument<Lang extends string = string> =
     Lang
   >;
 
+interface SettingsDocumentData {}
+
+/**
+ * Settings document from Prismic
+ *
+ * - **API ID**: `settings`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/content-modeling
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type SettingsDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<SettingsDocumentData>,
+    "settings",
+    Lang
+  >;
+
 export type AllDocumentTypes =
   | HomepageDocument
   | LuxuryFragranceDocument
-  | LuxuryHomepageDocument;
+  | LuxuryHomepageDocument
+  | SettingsDocument;
 
 /**
  * Primary content in *Hero → Default → Primary*
@@ -878,6 +897,8 @@ declare module "@prismicio/client" {
       LuxuryHomepageDocument,
       LuxuryHomepageDocumentData,
       LuxuryHomepageDocumentDataSlicesSlice,
+      SettingsDocument,
+      SettingsDocumentData,
       AllDocumentTypes,
       HeroSlice,
       HeroSliceDefaultPrimary,
